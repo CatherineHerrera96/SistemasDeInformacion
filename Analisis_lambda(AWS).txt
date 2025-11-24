@@ -1,0 +1,81 @@
+¿Qué es AWS Lambda?
+
+AWS Lambda es un servicio de “funciones sin servidor” de Amazon. En lugar de levantar un servidor y mantenerlo prendido, subes tu código y Lambda se encarga de ejecutarlo solo cuando hace falta.
+
+Tú no administras máquinas, sistemas operativos ni nada de eso; solo escribes funciones.
+
+Cómo funciona, a lo sencillo
+
+Escribes una función (en Python, Node.js, Java, etc.).
+
+La subes a Lambda (o la conectas desde un repositorio).
+
+Configuras qué evento la dispara:
+
+Una petición HTTP (vía API Gateway).
+
+Un archivo nuevo en S3.
+
+Un mensaje en una cola (SQS).
+
+Un cron (EventBridge / CloudWatch Events).
+
+Cuando pasa ese evento, Lambda levanta tu función, la ejecuta y la apaga.
+
+Pagas solo por:
+
+El número de ejecuciones.
+
+El tiempo que tu código tarda en correr (en milisegundos) y la memoria que le asignaste.
+
+Palabras clave que necesitas tener claras
+
+Función Lambda: tu código + la configuración (runtime, memoria, timeout, variables de entorno).
+
+Evento (Event): lo que dispara la función (petición HTTP, archivo nuevo, mensaje, etc.).
+
+Trigger: el servicio que genera ese evento (API Gateway, S3, SQS, etc.).
+
+Runtime: lenguaje y versión que usas (por ejemplo, Node.js 20, Python 3.12).
+
+Timeout: tiempo máximo que puede ejecutarse tu función antes de que Lambda la mate.
+
+Cold start: la “primera vez” que Lambda arranca tu función (o después de un rato sin usarse). Esa primera ejecución puede tardar un poquito más porque tiene que montar el entorno.
+
+¿Cuándo sí tiene sentido usar Lambda?
+
+Te sirve mucho cuando tienes cosas tipo:
+
+Tareas pequeñas y puntuales:
+
+Procesar una imagen cuando se sube a S3.
+
+Validar datos de un formulario y guardarlos en una base de datos.
+
+APIs ligeras:
+
+Endpoints REST que hacen lógica sencilla y consultas rápidas.
+
+Automatizaciones y tareas programadas:
+
+Ejecutar una función cada cierto tiempo (ej: limpiar registros viejos).
+
+Procesamiento por eventos:
+
+Cada vez que pase X en tu sistema, que se ejecute una función y ya.
+
+La idea es: código corto, rápido y activado por eventos.
+
+¿Cuándo NO es buena idea?
+
+Lambda NO es tan buena opción cuando:
+
+Necesitas un proceso que esté corriendo todo el tiempo (un servidor de juego, un socket abierto, etc.).
+
+Tienes tareas que duran mucho tiempo y son pesadas (procesos de varios minutos muy intensivos).
+
+Requieres control fino del sistema operativo, drivers, etc.
+
+Tu app tiene estado en memoria que necesitas mantener entre peticiones (Lambda es más bien “stateless”: cada ejecución es independiente).
+
+En esos casos suele convenir más usar EC2, contenedores (ECS/EKS) u otro tipo de servicio.
