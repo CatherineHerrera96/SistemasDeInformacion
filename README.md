@@ -1,16 +1,15 @@
-# 💻 Sistemas de Información  
+# Masacotta Desk — Dashboard Power BI 
 
-Repositorio personal de **Catherine Herrera** para la materia **Sistemas de Información**.  
-Aquí se gestionan todas las entregas mediante diferentes *branches* (ramas) de trabajo.
+Este branch contiene el archivo de **Power BI (.pbix)** con un tablero de analítica para la aplicación *Masacotta Desk* (inventario y ventas), construido a partir de la base de datos del proyecto.
 
----
+## Contenido
+- `DashMasacotta>.pbix` — Tablero en Power BI (KPIs + visualizaciones).
 
-## 🌿 Estructura del repositorio
-
-Cada entrega o proyecto se maneja en una rama independiente para mantener un flujo de trabajo ordenado:
-
-| Rama | Descripción |
-|------|--------------|
-| `main` | Contiene el README y la documentación general del curso. |
-| `Power-BI-y-Tableau` | Entrega relacionada con el uso de herramientas de análisis y visualización de datos. |
-| `Analisis-Comparativo` | Proyecto de comparación de sistemas de información o herramientas tecnológicas. |
+## KPIs incluidos (ejemplo)
+- Ventas totales
+- Número de ventas
+- Unidades vendidas
+- Stock total
+- Valor total del inventario
+- Top productos
+- Ventas por periodo (día/semana/mes)
